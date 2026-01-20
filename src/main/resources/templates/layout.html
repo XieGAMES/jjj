@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title><span th:text="${title ?: 'WAM'}">WAM</span> - WAM</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="/" th:href="@{/}">WAM</a>
+                </div>
+                <div class="nav-links">
+                    <a th:href="@{/vending-machines}" th:text="#{vending.machines}">TA</a>
+                    <a th:href="@{/maintenance-calendar}" th:text="#{maintenance.calendar}">Calendar</a>
+                    <a th:href="@{/work-schedule}" th:text="#{work.schedule}">Work Schedule</a>
+                </div>
+                <div class="language-switcher">
+                    <form th:action="@{/lang}" method="post" class="lang-form">
+                        <select name="lang" onchange="this.form.submit()" th:with="currentLang=${#locale.language}">
+                            <option value="ru" th:selected="${currentLang == 'ru'}">RU</option>
+                            <option value="en" th:selected="${currentLang == 'en'}">EN</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div th:replace="~{::page-content}">Content will be inserted here</div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Web Application Manager. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>

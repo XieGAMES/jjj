@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout}">
+<head>
+    <title th:text="#{welcome.title}">Welcome</title>
+</head>
+<body>
+    <div th:fragment="page-content">
+        <section class="hero">
+            <h1 th:text="#{welcome.header}">Welcome to WAM</h1>
+            <p th:text="#{welcome.description}">Web Application Manager for Vending Machines</p>
+        </section>
+
+        <section class="dashboard">
+            <div class="card">
+                <h2 th:text="#{dashboard.vending.machines}">Vending Machines</h2>
+                <p th:text="#{dashboard.vending.machines.desc}">View and manage all vending machines</p>
+                <a th:href="@{/vending-machines}" class="btn" th:text="#{view.all}">View All</a>
+            </div>
+
+            <div class="card">
+                <h2 th:text="#{dashboard.maintenance}">Maintenance</h2>
+                <p th:text="#{dashboard.maintenance.desc}">Schedule and track maintenance activities</p>
+                <a th:href="@{/maintenance-calendar}" class="btn" th:text="#{view.calendar}">View Calendar</a>
+            </div>
+
+            <div class="card">
+                <h2 th:text="#{dashboard.work.schedule}">Work Schedule</h2>
+                <p th:text="#{dashboard.work.schedule.desc}">Manage work schedules and assignments</p>
+                <a th:href="@{/work-schedule}" class="btn" th:text="#{view.schedule}">View Schedule</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

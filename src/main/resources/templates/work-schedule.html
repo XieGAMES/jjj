@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Work Schedule</title>
+</head>
+<body>
+    <div th:fragment="page-content">
+        <h1>Work Schedule</h1>
+        <div class="schedule-controls">
+            <select id="schedule-view">
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+            </select>
+            <button class="btn-primary">Create Task</button>
+        </div>
+
+        <div class="schedule-grid">
+            <div class="schedule-item" th:each="task : ${tasks}">
+                <div class="task-title" th:text="${task.title}">Task Title</div>
+                <div class="task-details">
+                    <span class="task-date" th:text="${task.date}">Date</span>
+                    <span class="task-assigned" th:text="'Assigned to ' + ${task.assignedTo}">Assigned to John</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/schedule.js}"></script>
+</body>
+</html>

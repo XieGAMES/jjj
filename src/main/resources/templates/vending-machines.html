@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vending Machines</title>
+</head>
+<body>
+    <div th:fragment="page-content">
+        <h1>Vending Machines</h1>
+        <div class="controls">
+            <button class="btn-primary">Add Machine</button>
+        </div>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Model</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="vm : ${vendingMachines}">
+                    <td th:text="${vm.id}">ID</td>
+                    <td th:text="${vm.model}">Model</td>
+                    <td th:text="${vm.location}">Location</td>
+                    <td th:text="${vm.status}">Status</td>
+                    <td>
+                        <button class="btn-sm">Edit</button>
+                        <button class="btn-sm btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

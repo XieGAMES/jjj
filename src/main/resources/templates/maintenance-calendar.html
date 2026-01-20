@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Maintenance Calendar</title>
+</head>
+<body>
+    <div th:fragment="page-content">
+        <h1>Maintenance Calendar</h1>
+        <div class="calendar-controls">
+            <button class="btn-nav" id="prev-month">&lt;</button>
+            <span id="current-month">Current Month</span>
+            <button class="btn-nav" id="next-month">&gt;</button>
+        </div>
+
+        <div class="calendar-grid">
+            <!-- Calendar content will be populated by JavaScript -->
+            <div class="calendar-day" th:each="day : ${days}">
+                <div class="day-number" th:text="${day.number}">1</div>
+                <div class="maintenance-events">
+                    <div class="event" th:each="event : ${day.events}" th:text="${event.title}">
+                        Event title
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/calendar.js}"></script>
+</body>
+</html>
